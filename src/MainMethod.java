@@ -504,7 +504,7 @@ public class MainMethod implements ActionListener {
                     resultVal = num_One / num_Two;
                     break;
                 case "%":
-                    //Need to fix
+                    //Need to fix -- test
                     resultVal = num_One / 100;
                     break;
                 case "mod":
