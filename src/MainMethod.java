@@ -105,7 +105,7 @@ public class MainMethod implements ActionListener {
         button_TanH = new JButton("tanh");
         button_Exit = new JButton("EXIT");
 
-        frame = new JFrame("CI - Calc");
+        JFrame frame = new JFrame("CI - Calc");
         frame.setSize(600, 600);
         frame.getContentPane().setBackground(Color.GRAY);
 
@@ -411,7 +411,8 @@ public class MainMethod implements ActionListener {
             num_One = Double.parseDouble(stringVal);
             operation = "1/n";
         }
-        if (e.getSource() == button_Period) {
+        if (e.getSource() == button_Period)
+        {
 
         }
         if (e.getSource() == button_Log) {
@@ -482,30 +483,34 @@ public class MainMethod implements ActionListener {
             String stringOperation = textfieldResult.getText();
             num_Two = Double.parseDouble(stringOperation);
 
-            switch (operation) {
-                case "C":
-                    textfieldResult.setText("");
-                    textareaResult.setText("");
-                    resultVal = 0;
-                    break;
+            switch (operation)
+            {
+                //Basic Buttons
                 case "+":
                     resultVal = num_One + num_Two;
                     break;
-
                 case "-":
                     resultVal = num_One - num_Two;
                     break;
-
                 case "*":
                     resultVal = num_One * num_Two;
                     break;
-
                 case "÷":
                     resultVal = num_One / num_Two;
                     break;
+                case "±":
+                    resultVal = num_One - num_One - num_One;
+                    break;
                 case "%":
-                    //Need to fix -- test
-                    resultVal = num_One / 100;
+                    resultVal = num_One * (num_Two / 100);
+                    break;
+
+                //Data Buttons
+                case "log":
+                    resultVal = Math.log10(num_One);
+                    break;
+                case "ln":
+                    resultVal = Math.log(num_One);
                     break;
                 case "mod":
                     resultVal = num_One % num_Two;
@@ -525,22 +530,60 @@ public class MainMethod implements ActionListener {
                 case "1/n":
                     resultVal = 1 / (num_One);
                     break;
-                case "±":
-                    resultVal = num_One - num_One - num_One;
+
+                //Trig Buttons
+                case "sin":
+                    resultVal = Math.sin(num_One);
                     break;
-                case "EXIT":
-                    frame.dispose();
-                    resultVal = 0;
+                case "cos":
+                    resultVal = Math.cos(num_One);
+                    break;
+                case "tan":
+                    resultVal = Math.tan(num_One);
+                    break;
+                case "asin":
+                    resultVal = Math.asin(num_One);
+                    break;
+                case "acos":
+                    resultVal = Math.acos(num_One);
+                    break;
+                case "atan":
+                    resultVal = Math.atan(num_One);
+                    break;
+                case "sinh":
+                    resultVal = Math.sinh(num_One);
+                    break;
+                case "cosh":
+                    resultVal = Math.cosh(num_One);
+                    break;
+                case "tanh":
+                    resultVal = Math.tanh(num_One);
                     break;
             }
             textareaResult.setText(String.valueOf("Operation: " + operation + "\nAnswer: " + resultVal));
         }
-    }
+        //Exit Button
+        if (e.getSource() == button_Exit)
+        {
+            System.exit(0);
+        }
+        //Clear Button
+        if (e.getSource() == button_Clear)
+        {
+            num_One = 0;
+            num_Two = 0;
+            textfieldResult.setText("");
+            textareaResult.setText("");
+        }
 
+        if (e.getSource() == button_Period)
+        {
+            textfieldResult.setText( textfieldResult.getText() + ".");
+        }
+    }
 
     public static void main(String[] args)
     {
-
         MainMethod calculator = new MainMethod();
     }
 }
