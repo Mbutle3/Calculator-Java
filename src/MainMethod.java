@@ -109,11 +109,11 @@ public class MainMethod implements ActionListener {
         frame.setSize(600, 600);
         frame.getContentPane().setBackground(Color.GRAY);
 
+
         gbc = new GridBagConstraints();
         gbl = new GridBagLayout();
         frame.setLayout(gbl);
         gbc.fill = gbc.HORIZONTAL;
-
         textfieldResult = new JTextField(1);
         textfieldResult.setBackground(Color.GREEN);
         gbc.gridwidth = 10;
@@ -410,10 +410,6 @@ public class MainMethod implements ActionListener {
             String stringVal = textfieldResult.getText();
             num_One = Double.parseDouble(stringVal);
             operation = "1/n";
-        }
-        if (e.getSource() == button_Period)
-        {
-
         }
         if (e.getSource() == button_Log) {
             String stringVal = textfieldResult.getText();
